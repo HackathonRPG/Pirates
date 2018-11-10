@@ -4,7 +4,7 @@ public class Driver
 
 	public static void main(String[] args)
 	{
-		int[][] debugIsland = new int[15][15];
+		char[][] debugIsland = new char[15][15];
 		int i;
 		int k;
 		for (i = 0; i < 15; i++)
@@ -13,11 +13,11 @@ public class Driver
 			{
 				if (i == 0 || i == 14)
 				{
-					debugIsland[i][k] = -1;
+					debugIsland[i][k] = 'w';
 				}
 				else if (k == 0 || k == 14)
 				{
-					debugIsland[i][k] = -1;
+					debugIsland[i][k] = 'w';
 				} else 
 				{
 					debugIsland[i][k] = 0;
