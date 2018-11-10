@@ -4,7 +4,12 @@ public class Driver
 
 	public static void main(String[] args)
 	{
-		Combat.startCombat(2); // argument is number of enemies
+		Enemy[] array = new Enemy[5];
+		
+		Enemy enemy1 = new Enemy();
+		array[0] = enemy1;
+		
+		Combat.startCombat(2, array); // argument is number of enemies
 	}
 
 }

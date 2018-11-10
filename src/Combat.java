@@ -2,7 +2,7 @@ import java.util.Scanner;
 
 public class Combat {
 
-	public static void startCombat(int enemies) {
+	public static void startCombat(int enemies, Enemy[] enemyArray) {
 		Scanner input = new Scanner(System.in);
 
 		int choice; // what the player wants to do on their turn
@@ -25,7 +25,7 @@ public class Combat {
 				// the players choice of action
 				switch (choice) {
 				case 1:
-					playerAttack(input);
+					playerAttack(input, enemyArray);
 					break;
 				case 2:
 					useItem(input);
@@ -36,34 +36,16 @@ public class Combat {
 				}
 
 				turn = 0; // change to enemy
-				
+
 			} else { // enemy turn
-				
+
 				for (int i = 0; i < enemies; i++) {
 					enemyAttack(3);
 				}
-				
+				System.out.println("");
 				turn = 1; // change to player
 			}
 		}
-	}
-
-	private static int getInitiative() {
-		int turn;
-		int playerInitiative = 1 + (int) (Math.random() * ((20 - 1) + 1));
-		int enemyInitiative = 1 + (int) (Math.random() * ((20 - 1) + 1));
-
-		System.out.println("Your Initiative: " + playerInitiative);
-		System.out.println("Enemy Initiative: " + enemyInitiative);
-
-		if (playerInitiative >= enemyInitiative) {
-			System.out.println("You have the higher initiative. You go first.");
-			turn = 1;
-		} else {
-			System.out.println("You have the higher initiative. You go first.");
-			turn = 0;
-		}
-		return turn;
 	}
 
 	private static void enemyAttack(int power) {
@@ -79,15 +61,22 @@ public class Combat {
 
 	}
 
-	private static void playerAttack(Scanner input) {
+	private static void playerAttack(Scanner input, Enemy[] enemyArray) {
 		int enemy;
 		int weapon;
 		int roll;
 
-		System.out.print("Choose an enemy");
-		System.out.print("ENEMY STATS");
+		System.out.println("Choose an enemy:");
+		int count = 0;
+		while (enemyArray[count] != null)
+		{
+			System.out.println(count + ": " + enemyArray[count].toString());
+			count++;
+		}
+		
 		enemy = input.nextInt();
 
+		
 		System.out.println("Choose a weapon to attack with");
 		System.out.println("1. PLAYER WEAPON 1 STATS");
 		System.out.println("2. PLAYER WEAPON 2 STATS");
@@ -99,7 +88,29 @@ public class Combat {
 	}
 
 	private static void useItem(Scanner input) {
+		int itemChoice;
+		System.out.println("SHOW INVENTORY");
+		itemChoice = input.nextInt();
+		
+	}
 
+	// DONE
+	private static int getInitiative() {
+		int turn;
+		int playerInitiative = 1 + (int) (Math.random() * ((20 - 1) + 1));
+		int enemyInitiative = 1 + (int) (Math.random() * ((20 - 1) + 1));
+
+		System.out.println("Your Initiative: " + playerInitiative);
+		System.out.println("Enemy Initiative: " + enemyInitiative);
+
+		if (playerInitiative >= enemyInitiative) {
+			System.out.println("You have the higher initiative. You go first.\n");
+			turn = 1;
+		} else {
+			System.out.println("The enemies have the higher initiative. They go first.\n");
+			turn = 0;
+		}
+		return turn;
 	}
 
 	// DONE
