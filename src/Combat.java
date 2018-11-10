@@ -1,4 +1,3 @@
-import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Combat {
@@ -20,7 +19,7 @@ public class Combat {
 				System.out.println("2. Use item");
 				System.out.println("3. Try to run away");
 
-				choice = getUserAction(input);
+				choice = input.nextInt();
 
 				// the players choice of action
 				switch (choice) {
@@ -51,28 +50,14 @@ public class Combat {
 		}
 	}
 
-	private static int getUserAction(Scanner input) {
-		int choice = 0;
-		while (choice < 1 || choice > 3) {
-			
-			try {
-				choice = input.nextInt();
-			} catch (InputMismatchException e) {
-				System.out.println("Invalid input");
-				choice = input.nextInt();
-			}
-			
-		}
-
-		return choice;
-	}
-
 	private static void enemyAttack(int enemy, Enemy[] enemyArray, Player player) {
 		int playerArmor = 15;
-		int roll = 1 + (int) (Math.random() * ((20 - 1) + 1));
+		int power = enemyArray[enemy].getAttackPower();
+		
+		int roll = rollAttack(power);
 
 		if (roll >= playerArmor) {
-			System.out.println("Enemy " + enemy + " hits you for " + enemyArray[enemy].getAttackPower());
+			System.out.println("Enemy " + enemy + " hits you for " + power);
 			// TODO player take damage
 		} else {
 			System.out.println("Enemy " + enemy + " missed their attack");
@@ -102,7 +87,7 @@ public class Combat {
 
 		int power = 3; // weapon damage
 
-		roll = 1 + (int) (Math.random() * ((20 - 1) + 1)) + power;
+		roll = rollAttack(power);
 
 		if (roll >= 12) {
 			System.out.println("You hit enemy " + enemy + " for " + power);
@@ -117,7 +102,7 @@ public class Combat {
 	private static void useItem(Scanner input) {
 		int itemChoice;
 		System.out.println("SHOW INVENTORY");
-		itemChoice = getUserAction(input);
+		itemChoice = input.nextInt();
 
 	}
 
