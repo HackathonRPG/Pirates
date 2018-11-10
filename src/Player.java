@@ -2,8 +2,9 @@
 public class Player extends Character
 {
 	
-	public Weapon activeWeapon;		// weapon currently being used
-	public Armor activeArmor;			// armor currently being worn
+	public Item activeWeapon;		// weapon currently being used
+	public Item activeArmor;			// armor currently being worn
+	
 	public Player()
 	{
 		
@@ -23,11 +24,8 @@ public class Player extends Character
 		{
 			System.out.println("Index given is not in inventory");
 		}
-		
-		if (this.inventory[inventoryIndex] instanceof Weapon)
-		{
-			this.activeWeapon = (Weapon) this.inventory[inventoryIndex];
-		}
+
+		this.activeWeapon = this.inventory[inventoryIndex];
 	}
 	
 	public void setActiveArmor(int inventoryIndex)
@@ -40,9 +38,6 @@ public class Player extends Character
 			System.out.println("Index given is not in inventory");
 		}
 		
-		if (this.inventory[inventoryIndex] instanceof Armor)
-		{
-			this.activeArmor = (Armor) this.inventory[inventoryIndex];
-		}
+		this.activeArmor = this.inventory[inventoryIndex];
 	}
 }

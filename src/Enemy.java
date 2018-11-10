@@ -19,7 +19,7 @@ public class Enemy extends Character
 			int randNum = rand.nextInt(3);
 			if (randNum == 0)
 			{
-				return Potion.randomPotion();
+				return Item.randomPotion();
 			} else if (randNum == 1)
 			{
 				return new Weapon("Cutlass", 3, 0, 5);
@@ -31,7 +31,7 @@ public class Enemy extends Character
 			int randNum1 = rand.nextInt(3);
 			if (randNum1 == 0)
 			{
-				return Potion.randomPotion();
+				return Item.randomPotion();
 			} else if (randNum1 == 1)
 			{
 				return new Weapon("Scimitar", 3, 0, 5);
@@ -43,7 +43,7 @@ public class Enemy extends Character
 			int randNum2 = rand.nextInt(3);
 			if (randNum2 == 0)
 			{
-				return Potion.randomPotion();
+				return Item.randomPotion();
 			} else if (randNum2 == 1)
 			{
 				return new Weapon("Cutlass", 3, 0, 5);
@@ -55,7 +55,7 @@ public class Enemy extends Character
 			int randNum3 = rand.nextInt(3);
 			if (randNum3 == 0)
 			{
-				return Potion.randomPotion();
+				return Item.randomPotion();
 			} else if (randNum3 == 1)
 			{
 				return new Weapon("Falcion", 3, 0, 5);
@@ -67,7 +67,7 @@ public class Enemy extends Character
 			int randNum4 = rand.nextInt(3);
 			if (randNum4 == 0)
 			{
-				return Potion.randomPotion();
+				return Item.randomPotion();
 			} else if (randNum4 == 1)
 			{
 				return new Weapon("Steel Sword", 3, 0, 5);
@@ -78,7 +78,7 @@ public class Enemy extends Character
 		}
 		return null;
 	}
-	public static Enemy generateEnemy(int playerLevel)
+	public Enemy generateEnemy(int playerLevel)
 	{
 		Enemy newEnemy = null;
 		switch (playerLevel)
