@@ -29,6 +29,11 @@ public class Enemy extends Character
 			newEnemy.setArmorClass(15);
 			newEnemy.setAttackPower(9);
 			return newEnemy;
+		case 4:
+			newEnemy = new Enemy("Ghost", 17, 0, 9);
+			newEnemy.setArmorClass(17);
+			newEnemy.setAttackPower(11);
+			return newEnemy;
 		}
 		return newEnemy;
 	}
