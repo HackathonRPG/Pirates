@@ -162,4 +162,13 @@ public void itemGenerate(){
 	itemIdNum = 15;
 	attack = 0;
 	defense = 0;
+	//Effect may have to be done with in-combat systems, as initiative is not stored with items.
+	
+	Item healthPotion = new Item();
+	itemName = "Health Potion";
+	itemType =  "potion";
+	itemIdNum = 16;
+	attack = 0;
+	defense = 0;
+	//Healing may need to be handled in-combat. Something that takes away a health potion if one is there and adds health +XX
 }
