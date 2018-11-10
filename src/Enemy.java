@@ -3,7 +3,7 @@ public class Enemy extends Character
 {
 	private int armorClass;
 	private int attackPower;
-	
+	// TODO set to scale with player level 
 	public Enemy()
 	{
 		
@@ -32,5 +32,11 @@ public class Enemy extends Character
 	public void setAttackPower(int attackPower)
 	{
 		this.attackPower = attackPower;
+	}
+	
+	@Override
+	public String toString()
+	{
+		return String.format("Armor: %d\nAttack: %d\n", this.armorClass, this.attackPower);
 	}
 }
