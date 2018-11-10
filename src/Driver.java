@@ -9,9 +9,11 @@ public class Driver
 		Enemy enemy1 = new Enemy();
 		array[0] = enemy1;
 		
-		Player player = new Player();
+		Item[] items = new Item[1];
 		
-		Combat.startCombat(1, array); // argument is number of enemies
+		Player player = new Player("Luffy", 20, 0, 0, items);
+		
+		Combat.startCombat(array, player); // argument is number of enemies
 	}
 
 }
