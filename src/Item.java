@@ -57,22 +57,25 @@ public class Item {
 	}
 	
 
-	public static Potion randomPotion()
+	public static Item randomPotion()
 	{
 		Random rand = new Random();
-		int seed = rand.nextInt(4);
+		int seed = rand.nextInt(3);
 		switch (seed)
 		{
 		case 0:
-			return new Potion("Potion of speed", 10, 0);
+			return new Item("Potion of speed", "potion",15);
 		case 1:
-			return new Potion("Potion of Strength", 10, 0);
+			return new Item("Potion of Strength", "potion", 11);
 		case 2:
-			return new Potion("Potion of Protection", 10, 0);
-		case 3:
-			return new Potion("Potion of Luck", 10, 0);
+			return new Item("Potion of Protection", "potion", 12);
 		}
 		return null;
+	}
+	
+	public Item(String name, String type, int itemID)
+	{
+		
 	}
 	
 	public Item()
