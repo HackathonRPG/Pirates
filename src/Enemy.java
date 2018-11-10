@@ -22,10 +22,10 @@ public class Enemy extends Character
 				return Item.randomPotion();
 			} else if (randNum == 1)
 			{
-				return new Weapon("Cutlass", 3, 0, 5);
+				return new Item("Iron Sword", "weapon", 1, 3, 0);
 			} else
 			{
-				return new Armor("Cloth Armor", 2, 0, 5);
+				return new Item("Tricorne", "armor", 6, 0, 3);
 			}
 		case 2:
 			int randNum1 = rand.nextInt(3);
@@ -34,10 +34,10 @@ public class Enemy extends Character
 				return Item.randomPotion();
 			} else if (randNum1 == 1)
 			{
-				return new Weapon("Scimitar", 3, 0, 5);
+				return new Item("Steel Sword", "weapon", 2, 5, 0);
 			} else
 			{
-				return new Armor("Leather Armor", 2, 0, 5);
+				return new Item("Leather Coat", "armor", 7, 0, 5);
 			}
 		case 3:
 			int randNum2 = rand.nextInt(3);
@@ -46,10 +46,10 @@ public class Enemy extends Character
 				return Item.randomPotion();
 			} else if (randNum2 == 1)
 			{
-				return new Weapon("Cutlass", 3, 0, 5);
+				return new Item("Scimitar", "weapon", 3, 6, 0);
 			} else
 			{
-				return new Armor("Cloth Armor", 2, 0, 5);
+				return new Item("Steel toe Boots", "armor", 8, 0, 6);
 			}
 		case 4:
 			int randNum3 = rand.nextInt(3);
@@ -58,10 +58,10 @@ public class Enemy extends Character
 				return Item.randomPotion();
 			} else if (randNum3 == 1)
 			{
-				return new Weapon("Falcion", 3, 0, 5);
+				return new Item("Falchion", "weapon", 4, 7, 0);
 			} else
 			{
-				return new Armor("Chain mail", 2, 0, 5);
+				return new Item("Storm Overcoat", "armor", 9, 0, 7);
 			}
 		case 5:
 			int randNum4 = rand.nextInt(3);
@@ -70,10 +70,10 @@ public class Enemy extends Character
 				return Item.randomPotion();
 			} else if (randNum4 == 1)
 			{
-				return new Weapon("Steel Sword", 3, 0, 5);
+				return new Item("Rapier", "weapon", 5, 8, 0);
 			} else
 			{
-				return new Armor("Plate", 2, 0, 5);
+				return new Item("Captains Overcoat", "armor", 10, 0, 8);
 			}
 		}
 		return null;
