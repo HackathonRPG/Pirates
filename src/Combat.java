@@ -2,29 +2,29 @@ import java.util.Scanner;
 
 public class Combat {
 
-	public static void startCombat(Enemy[] enemyArray, Player player) {
+	public static void startCombat(Enemy enemy, Player player) {
 		Scanner input = new Scanner(System.in);
 
-		int enemies = getNumEnemies(enemyArray); // the number of enemies in the fight
 		int choice; // what the player wants to do on their turn
 		boolean run = false; // if the player wants to run
+		boolean enemyAlive = true;
 		int turn = getInitiative(); // determines who goes first player=1, enemy=0
 
 		// combat loop
-		while (enemies > 0 && run == false) {
+		while (enemyAlive == true && run == false) {
 
 			if (turn == 1) { // player turn
 				System.out.println("What do you want to do?");
 				System.out.println("1. Attack");
 				System.out.println("2. Use item");
-				System.out.println("3. Try to run away");
+				System.out.println("3. Run");
 
 				choice = input.nextInt();
 
 				// the players choice of action
 				switch (choice) {
 				case 1:
-					playerAttack(input, enemyArray);
+					enemyAlive = playerAttack(input, player, enemy);
 					break;
 				case 2:
 					useItem(input);
@@ -38,11 +38,10 @@ public class Combat {
 
 			} else { // enemy turn
 
-				System.out.println("Enemy Turn.");
+				System.out.println(enemy.getName() + "'s Turn.");
 
 				// each enemy attacks
-				for (int i = 0; i < enemies; i++)
-					enemyAttack(i, enemyArray, player);
+				enemyAttack(enemy, player);
 
 				System.out.println("");
 				turn = 1; // change to player
@@ -50,70 +49,73 @@ public class Combat {
 		}
 	}
 
-	private static void enemyAttack(int enemy, Enemy[] enemyArray, Player player) {
+	private static void enemyAttack(Enemy enemy, Player player) {
 		int playerArmor = 15;
-		int power = enemyArray[enemy].getAttackPower();
-		
+		int power = enemy.getAttackPower();
+
 		int roll = rollAttack(power);
+		System.out.println("They rolled a " + roll + " against your armor class of " + playerArmor);
 
 		if (roll >= playerArmor) {
-			System.out.println("Enemy " + enemy + " hits you for " + power);
-			// TODO player take damage
+			System.out.println("The enemy hits you for " + power + " damage");
+			player.takeDamage(power);
+
+			if (player.getHealth() > 0)
+				System.out.println("You have " + player.getHealth() + " health remaining");
+			else {
+				System.out.println("You died");
+			}
 		} else {
-			System.out.println("Enemy " + enemy + " missed their attack");
+			System.out.println("The enemy missed their attack");
 		}
 
 	}
 
-	private static void playerAttack(Scanner input, Enemy[] enemyArray) {
-		int enemy;
+	private static boolean playerAttack(Scanner input, Player player, Enemy enemy) {
+		
 		int weapon;
 		int roll;
+		int power;
+		int enemyArmor = enemy.getArmorClass();
 
-		System.out.println("Choose an enemy:");
-		int count = 0;
-		while (enemyArray[count] != null) {
-			System.out.println(count + ": " + enemyArray[count].toString());
-			count++;
+		System.out.println("Choose an attack");
+		System.out.println("1. Main Weapon (3 dmg)"); // TODO currently equipped weapon
+		System.out.println("2. Sidearm (5 dmg)");
+		weapon = input.nextInt();
+
+		if (weapon == 1) {
+			// int power = player.activeWeapon.getAttackPower(); // weapon damage
+			power = 3;
+		} else {
+			power = 5;
 		}
 
-		enemy = input.nextInt(); // TODO validation
-
-		// TODO
-		// System.out.println("Choose a weapon to attack with");
-		// System.out.println("1. PLAYER WEAPON 1 STATS");
-		// System.out.println("2. PLAYER WEAPON 2 STATS");
-		// weapon = input.nextInt();
-
-		int power = 3; // weapon damage
-
 		roll = rollAttack(power);
+		System.out.println("You rolled a " + roll + " against their armor class of " + enemyArmor);
 
-		if (roll >= 12) {
-			System.out.println("You hit enemy " + enemy + " for " + power);
-			// TODO enemy take damage
+		if (roll >= enemyArmor) {
+			System.out.println("You hit the enemy for " + power + " damage");
+			enemy.takeDamage(power);
+
+			if (enemy.getHealth() > 0)
+				System.out.println("They have " + enemy.getHealth() + " health remaining");
+			else {
+				System.out.println("They died. You gain 1 exp");
+				//TODO add experience
+				return false;
+			}
+
 		} else {
 			System.out.println("You missed your attack");
 		}
+
 		System.out.println("");
+		return true;
 	}
 
 	// TODO
 	private static void useItem(Scanner input) {
-		int itemChoice;
-		System.out.println("SHOW INVENTORY");
-		itemChoice = input.nextInt();
 
-	}
-
-	// DONE
-	private static int getNumEnemies(Enemy[] enemyArray) {
-		int enemies = 0;
-		for (int i = 0; i < enemyArray.length; i++) {
-			if (enemyArray[i] != null)
-				enemies++;
-		}
-		return enemies;
 	}
 
 	// DONE

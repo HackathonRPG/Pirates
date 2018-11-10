@@ -9,7 +9,7 @@ public class Enemy extends Character
 		
 	}
 	
-	public Enemy generateEnemy(int playerLevel)
+	public static Enemy generateEnemy(int playerLevel)
 	{
 		Enemy newEnemy = null;
 		switch (playerLevel)
