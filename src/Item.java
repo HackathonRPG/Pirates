@@ -74,6 +74,20 @@ public class Item {
 		}
 		return null;
 	}
+	
+	public Item()
+	{
+		
+	}
+	
+	public Item(String name, String type, int itemID, int attack, int defense)
+	{
+		this.itemName = name;
+		this.itemType = type;
+		this.itemIdNum = itemID;
+		this.attack = attack;
+		this.defense = defense;
+	}
 
 public void itemGenerate(){
 	Item ironSword = new Item();
