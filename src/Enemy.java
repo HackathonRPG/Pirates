@@ -1,8 +1,8 @@
 
 public class Enemy extends Character
 {
-	private int armorClass;
-	private int attackPower;
+	private int armorClass = 12;
+	private int attackPower = 3;
 	
 	public Enemy()
 	{

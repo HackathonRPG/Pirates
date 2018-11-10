@@ -38,9 +38,11 @@ public class Combat {
 				turn = 0; // change to enemy
 
 			} else { // enemy turn
-
+				
+				System.out.println("Enemy Turn.");
+				
 				for (int i = 0; i < enemies; i++) {
-					enemyAttack(3);
+					enemyAttack(i, enemyArray);
 				}
 				System.out.println("");
 				turn = 1; // change to player
@@ -48,15 +50,15 @@ public class Combat {
 		}
 	}
 
-	private static void enemyAttack(int power) {
+	private static void enemyAttack(int enemy, Enemy[] enemyArray) {
 		int playerArmor = 15;
-		int roll = 1 + (int) (Math.random() * ((20 - 1) + 1)) + power;
+		int roll = 1 + (int) (Math.random() * ((20 - 1) + 1));
 
 		if (roll >= playerArmor) {
-			System.out.println("The enemy hits you for " + power);
+			System.out.println("Enemy " + enemy + " hits you for " + enemyArray[enemy].getAttackPower());
 			// player.takedamage
 		} else {
-			System.out.println("The enemy missed their attack");
+			System.out.println("Enemy " + enemy + " missed their attack");
 		}
 
 	}
@@ -77,14 +79,22 @@ public class Combat {
 		enemy = input.nextInt();
 
 		
-		System.out.println("Choose a weapon to attack with");
-		System.out.println("1. PLAYER WEAPON 1 STATS");
-		System.out.println("2. PLAYER WEAPON 2 STATS");
+//		System.out.println("Choose a weapon to attack with");
+//		System.out.println("1. PLAYER WEAPON 1 STATS");
+//		System.out.println("2. PLAYER WEAPON 2 STATS");
 
-		weapon = input.nextInt();
+		//weapon = input.nextInt();
+		int power = 3;
 
-		roll = rollAttack(5);
+		roll = 1 + (int) (Math.random() * ((20 - 1) + 1)) + power;
 
+		if (roll >= enemyArray[enemy].getHealth()) {
+			System.out.println("You hit the enemy for " + power);
+			// player.takedamage
+		} else {
+			System.out.println("You missed your attack");
+		}
+		System.out.println("");
 	}
 
 	private static void useItem(Scanner input) {
@@ -118,10 +128,10 @@ public class Combat {
 		int run = 1 + (int) (Math.random() * ((20 - 1) + 1));
 
 		if (run >= 15) {
-			System.out.println("You managed to get away");
+			System.out.println("You managed to get away.\n");
 			return true;
 		} else {
-			System.out.println("You tried to run but failed");
+			System.out.println("You tried to run but couldn't get away!\n");
 			return false;
 		}
 	}

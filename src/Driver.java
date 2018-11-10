@@ -9,7 +9,7 @@ public class Driver
 		Enemy enemy1 = new Enemy();
 		array[0] = enemy1;
 		
-		Combat.startCombat(2, array); // argument is number of enemies
+		Combat.startCombat(1, array); // argument is number of enemies
 	}
 
 }
