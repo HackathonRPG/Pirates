@@ -1,3 +1,4 @@
+import java.util.Random;
 
 public class Enemy extends Character
 {
@@ -9,6 +10,74 @@ public class Enemy extends Character
 		
 	}
 	
+	public Item droppedItem(int playerLevel)
+	{
+		Random rand = new Random();
+		switch (playerLevel)
+		{
+		case 1:
+			int randNum = rand.nextInt(3);
+			if (randNum == 0)
+			{
+				return Potion.randomPotion();
+			} else if (randNum == 1)
+			{
+				return new Weapon("Cutlass", 3, 0, 5);
+			} else
+			{
+				return new Armor("Cloth Armor", 2, 0, 5);
+			}
+		case 2:
+			int randNum1 = rand.nextInt(3);
+			if (randNum1 == 0)
+			{
+				return Potion.randomPotion();
+			} else if (randNum1 == 1)
+			{
+				return new Weapon("Scimitar", 3, 0, 5);
+			} else
+			{
+				return new Armor("Leather Armor", 2, 0, 5);
+			}
+		case 3:
+			int randNum2 = rand.nextInt(3);
+			if (randNum2 == 0)
+			{
+				return Potion.randomPotion();
+			} else if (randNum2 == 1)
+			{
+				return new Weapon("Cutlass", 3, 0, 5);
+			} else
+			{
+				return new Armor("Cloth Armor", 2, 0, 5);
+			}
+		case 4:
+			int randNum3 = rand.nextInt(3);
+			if (randNum3 == 0)
+			{
+				return Potion.randomPotion();
+			} else if (randNum3 == 1)
+			{
+				return new Weapon("Falcion", 3, 0, 5);
+			} else
+			{
+				return new Armor("Chain mail", 2, 0, 5);
+			}
+		case 5:
+			int randNum4 = rand.nextInt(3);
+			if (randNum4 == 0)
+			{
+				return Potion.randomPotion();
+			} else if (randNum4 == 1)
+			{
+				return new Weapon("Steel Sword", 3, 0, 5);
+			} else
+			{
+				return new Armor("Plate", 2, 0, 5);
+			}
+		}
+		return null;
+	}
 	public static Enemy generateEnemy(int playerLevel)
 	{
 		Enemy newEnemy = null;
