@@ -20,6 +20,16 @@ public class Character
 		this.gold = gold;
 		this.inventory = inventory;
 	}
+	
+	public void takeDamage(int damage)
+	{
+		if (this.health - damage <= 0)
+		{
+			this.health = 0;
+			System.out.println(String.format("%s has died", this.name));
+		}
+		this.health = this.health - damage;
+	}
 
 	public int getHealth()
 	{
