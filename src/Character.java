@@ -1,13 +1,14 @@
 
 public class Character
 {
-	private int health;
+	private int health;		
 	private String name;
 	private int mana;
-	private int gold;
-	public Item[] inventory = new Item[20];
+	private int gold;					// currency
+	public Item[] inventory = new Item[20];		//inventory capped at 20 items
+	private int level;				// enemys scale with level
 	
-	public Character()
+	public Character()		//default constructor
 	{
 		
 	}
@@ -21,12 +22,15 @@ public class Character
 		this.inventory = inventory;
 	}
 	
+	/*
+	 * decrements health based on damage passed in
+	 */
 	public void takeDamage(int damage)
 	{
 		if (this.health - damage <= 0)
 		{
 			this.health = 0;
-			System.out.println(String.format("%s has died", this.name));
+		
 		}
 		this.health = this.health - damage;
 	}
@@ -69,6 +73,16 @@ public class Character
 	public void setGold(int gold)
 	{
 		this.gold = gold;
+	}
+
+	public int getLevel()
+	{
+		return level;
+	}
+
+	public void setLevel(int level)
+	{
+		this.level = level;
 	}
 	
 }
