@@ -10,7 +10,7 @@ public class Character
 	
 	public Character()		//default constructor
 	{
-		
+		this.level = 1;
 	}
 	
 	public Character(String name, int health, int mana, int gold, Item[] inventory)
@@ -20,6 +20,21 @@ public class Character
 		this.mana = mana;
 		this.gold = gold;
 		this.inventory = inventory;
+		this.level = 1;
+	}
+	
+	public boolean addItem(Item item)
+	{
+		for (int i = 0; i < this.inventory.length; i++)
+		{
+			if (this.inventory[i] == null)
+			{
+				this.inventory[i] = item;
+				return true;		// successfully added the item
+			}
+		}
+		// if it gets to this point then inventory is full
+		return false;
 	}
 	
 	/*
