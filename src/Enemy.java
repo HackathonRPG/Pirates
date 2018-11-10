@@ -1,15 +1,9 @@
 
 public class Enemy extends Character
 {
-<<<<<<< HEAD
 	private int armorClass = 12;
 	private int attackPower = 3;
 	
-=======
-	private int armorClass;
-	private int attackPower;
-	// TODO set to scale with player level 
->>>>>>> ddb1838e10a89cd2bef5e8478075caa526f8cdd2
 	public Enemy()
 	{
 		
